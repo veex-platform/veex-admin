@@ -2,33 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Industrial Design System */
-:root {
-  /* Primary - Industrial Blue */
-  --primary-50: #eff6ff;
-  --primary-500: #3b82f6;
-  --primary-900: #1e3a8a;
+@layer base {
+  :root {
+    /* Techmin Premium Dark Palette */
+    --background: #0b0e14;
+    --foreground: #f8fafc;
 
-  /* Accent - Emerald */
-  --accent-500: #10b981;
+    --card: #151921;
+    --card-foreground: #f8fafc;
 
-  /* Neutral - Slate */
-  --neutral-950: #020617;
-  --neutral-900: #0f172a;
-  --neutral-800: #1e293b;
-  --neutral-700: #334155;
+    --popover: #151921;
+    --popover-foreground: #f8fafc;
+
+    --primary: #3069fe;
+    --primary-foreground: #ffffff;
+
+    --secondary: #1e293b;
+    --secondary-foreground: #f8fafc;
+
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+
+    --accent: #3069fe20;
+    --accent-foreground: #3069fe;
+
+    --destructive: #ef4444;
+    --destructive-foreground: #f8fafc;
+
+    --border: #1e293b;
+    --input: #1e293b;
+    --ring: #3069fe;
+
+    --radius: 0.75rem;
+  }
 }
 
-/* Glassmorphism */
+@layer base {
+  * {
+    @apply border-border;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Premium Effects */
 .glass {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(21, 25, 33, 0.7);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.05);
 }
 
-/* Smooth transitions */
-* {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+.sidebar-gradient {
+  background: linear-gradient(180deg, #151921 0%, #0b0e14 100%);
+}
+
+.active-nav-link {
+  background: linear-gradient(90deg, rgba(48, 105, 254, 0.15) 0%, rgba(48, 105, 254, 0) 100%);
+  border-left: 3px solid #3069fe;
 }

@@ -1,6 +1,17 @@
 import { Header } from "@/components/shared/Header";
 
-async function getCampaigns() {
+export const dynamic = "force-dynamic";
+
+interface Campaign {
+    id: string;
+    name: string;
+    fleet_id: string;
+    version: string;
+    status: string;
+    created_at: string;
+}
+
+async function getCampaigns(): Promise<Campaign[]> {
     const registryUrl = process.env.NEXT_PUBLIC_REGISTRY_URL || "https://registry.veexplatform.com/api/v1";
 
     try {
@@ -36,7 +47,7 @@ export default async function OTAPage() {
                             <p className="text-slate-400">No OTA campaigns yet</p>
                         </div>
                     ) : (
-                        campaigns.map((campaign: any) => (
+                        campaigns.map((campaign: Campaign) => (
                             <div key={campaign.id} className="glass rounded-lg p-6">
                                 <div className="flex items-center justify-between">
                                     <div>
