@@ -1,6 +1,15 @@
 import { Header } from "@/components/shared/Header";
 
-async function getDevices() {
+export const dynamic = "force-dynamic";
+
+interface Device {
+    id: string;
+    version?: string;
+    last_seen?: string;
+    status: string;
+}
+
+async function getDevices(): Promise<Device[]> {
     const registryUrl = process.env.NEXT_PUBLIC_REGISTRY_URL || "https://registry.veexplatform.com/api/v1";
 
     try {
@@ -56,7 +65,7 @@ export default async function DevicesPage() {
                                     </td>
                                 </tr>
                             ) : (
-                                devices.map((device: any) => (
+                                devices.map((device: Device) => (
                                     <tr key={device.id} className="hover:bg-slate-800/30">
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-white">
                                             {device.id}

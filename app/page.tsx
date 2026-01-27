@@ -1,5 +1,7 @@
 import { Header } from "@/components/shared/Header";
 
+export const dynamic = "force-dynamic";
+
 async function getStats() {
   const registryUrl = process.env.NEXT_PUBLIC_REGISTRY_URL || "https://registry.veexplatform.com/api/v1";
 

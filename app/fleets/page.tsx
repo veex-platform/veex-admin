@@ -1,6 +1,15 @@
 import { Header } from "@/components/shared/Header";
 
-async function getFleets() {
+export const dynamic = "force-dynamic";
+
+interface Fleet {
+    id: string;
+    name: string;
+    description?: string;
+    device_count?: number;
+}
+
+async function getFleets(): Promise<Fleet[]> {
     const registryUrl = process.env.NEXT_PUBLIC_REGISTRY_URL || "https://registry.veexplatform.com/api/v1";
 
     try {
@@ -36,7 +45,7 @@ export default async function FleetsPage() {
                             <p className="text-slate-400">No fleets created yet</p>
                         </div>
                     ) : (
-                        fleets.map((fleet: any) => (
+                        fleets.map((fleet: Fleet) => (
                             <div key={fleet.id} className="glass rounded-lg p-6 hover:border-blue-500/50 cursor-pointer">
                                 <h3 className="text-lg font-semibold text-white">{fleet.name}</h3>
                                 <p className="mt-2 text-sm text-slate-400">{fleet.description || "No description"}</p>
