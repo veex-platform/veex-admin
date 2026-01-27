@@ -16,19 +16,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>
-        <div className="wrapper min-h-screen bg-background relative flex">
+    <html lang="en" className="dark">
+      <body className={`${inter.className} antialiased bg-background overflow-hidden`}>
+        <div className="flex h-screen w-screen bg-background text-foreground">
+          {/* Fixed Sidebar */}
           <Sidebar />
-          <div className="content-wrapper flex flex-col flex-1 pl-[250px] min-h-screen">
-            {children}
 
-            {/* Main Footer */}
-            <footer className="main-footer bg-white border-t border-slate-200 px-8 py-4 text-xs">
-              <div className="float-right hidden sm:inline text-slate-500">
-                <b>Version</b> 1.3.0
+          {/* Main Container */}
+          <div className="flex flex-col flex-1 min-h-0 relative">
+            <main className="flex-1 flex flex-col min-h-0 overflow-hidden">
+              {children}
+            </main>
+
+            {/* Industrial Minimal Footer */}
+            <footer className="h-10 border-t border-white/5 bg-[#0a0b10] flex items-center justify-between px-6 text-[10px] font-bold tracking-widest text-slate-600 uppercase">
+              <div className="flex items-center gap-4">
+                <span>&copy; 2026 VEEX PLATFORM</span>
+                <span className="text-white/10">|</span>
+                <span>INDUSTRIAL GRADE CORE v1.3.0</span>
               </div>
-              <strong className="text-slate-700">Copyright &copy; 2026 <a href="https://veexplatform.com" className="text-primary hover:underline">VEEX Platform</a>.</strong> All rights reserved.
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></div>
+                  <span>SYSTEM STABLE</span>
+                </div>
+              </div>
             </footer>
           </div>
         </div>
