@@ -59,7 +59,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            NEXT_PUBLIC_REGISTRY_URL=https://registry.veexplatform.com/api/v1
+            VITE_REGISTRY_URL=https://registry.veexplatform.com/api/v1
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
