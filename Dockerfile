@@ -8,6 +8,11 @@ RUN npm ci
 
 COPY . .
 ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+# Accept build argument for API URL
+ARG VITE_REGISTRY_URL
+ENV VITE_REGISTRY_URL=$VITE_REGISTRY_URL
+
 RUN npm run build
 
 # Production stage
