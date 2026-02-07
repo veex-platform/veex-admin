@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import Header from '@/components/shared/Header.vue'
 
 interface Device {
@@ -44,13 +44,44 @@ interface Device {
 
 const devices = ref<Device[]>([])
 const registryBase = import.meta.env.VITE_REGISTRY_URL || 'https://registry.veexplatform.com/api/v1'
+let socket: WebSocket | null = null
 
-onMounted(async () => {
+const fetchDevices = async () => {
   try {
     const res = await fetch(`${registryBase}/admin/devices`)
     if (res.ok) devices.value = await res.json()
   } catch {
     devices.value = []
   }
+}
+
+onMounted(async () => {
+  await fetchDevices()
+
+  // WebSocket Connection
+  const wsUrl = registryBase.replace(/^http/, 'ws') + '/ws'
+  console.log('Connecting to WS:', wsUrl)
+  
+  try {
+    socket = new WebSocket(wsUrl)
+    
+    socket.onmessage = (event) => {
+      try {
+        const msg = JSON.parse(event.data)
+        if (msg.type === 'device_registered') {
+          console.log('New device registered, refreshing list...')
+          fetchDevices()
+        }
+      } catch (e) {
+        console.error('WS Parse error', e)
+      }
+    }
+  } catch (e) {
+    console.error('WS Connection failed', e)
+  }
+})
+
+onUnmounted(() => {
+  if (socket) socket.close()
 })
 </script>
