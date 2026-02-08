@@ -1,52 +1,58 @@
 <template>
-  <header class="h-16 border-b border-white/5 bg-[#0a0b10]/80 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-10">
-    <div class="flex items-center gap-6">
-      <div class="flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
-        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-        <span class="text-[10px] font-bold text-amber-500 uppercase tracking-widest">Production</span>
+  <header class="h-16 border-b border-white/[0.03] bg-black/40 backdrop-blur-xl flex items-center justify-between px-8 sticky top-0 z-10">
+    <div class="flex items-center gap-8">
+      <div class="flex items-center gap-2 bg-white/5 border border-white/5 px-3 py-1.5 rounded-full shadow-inner">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(16,185,129,0.5)] animate-pulse-slow"></span>
+        <span class="text-[9px] font-black text-white/40 uppercase tracking-[0.2em]">Live-Sync</span>
       </div>
-      <div class="hidden md:flex items-center gap-4 text-xs">
-        <div class="flex items-center gap-2">
-          <Activity :size="14" class="text-secondary" />
-          <span class="text-slate-400">Registry:</span>
-          <span class="text-secondary font-bold">{{ stats.status }}</span>
+      <div class="hidden lg:flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+        <div class="flex items-center gap-2 group cursor-pointer hover:text-secondary transition-colors">
+          <Activity :size="14" class="text-secondary/50 group-hover:text-secondary transition-colors" />
+          <span>Ingest: <span class="text-white">Active</span></span>
         </div>
-        <div class="w-[1px] h-4 bg-white/10"></div>
-        <div class="flex items-center gap-2">
-          <Cpu :size="14" class="text-primary" />
-          <span class="text-slate-400">Devices:</span>
-          <span class="text-white font-bold">{{ stats.devices.toLocaleString() }}</span>
+        <div class="w-[1px] h-3 bg-white/10"></div>
+        <div class="flex items-center gap-2 group cursor-pointer hover:text-primary transition-colors">
+          <Cpu :size="14" class="text-primary/50 group-hover:text-primary transition-colors" />
+          <span>Pulse: <span class="text-white">{{ stats.devices }} Nodes</span></span>
         </div>
-        <div class="w-[1px] h-4 bg-white/10"></div>
-        <div class="flex items-center gap-2">
-          <AlertTriangle :size="14" class="text-destructive" />
-          <span class="text-slate-400">Alerts:</span>
-          <span class="text-destructive font-bold">{{ stats.alerts }}</span>
+        <div class="w-[1px] h-3 bg-white/10"></div>
+        <div class="flex items-center gap-2 group cursor-pointer hover:text-destructive transition-colors">
+          <AlertTriangle :size="14" class="text-destructive/50 group-hover:text-destructive transition-colors" />
+          <span>Alerts: <span class="text-white">0</span></span>
         </div>
       </div>
     </div>
-    <div class="flex items-center gap-3">
-      <div class="relative hidden lg:block">
-        <Search class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" :size="16" />
+    
+    <div class="flex items-center gap-4">
+      <div class="relative hidden xl:block">
+        <Search class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" :size="14" />
         <input
           type="text"
-          placeholder="Search fleet..."
-          class="bg-white/5 border border-white/10 rounded-xl py-1.5 pl-10 pr-4 text-xs focus:border-primary outline-none transition-all w-64"
+          placeholder="SEARCH REGISTRY..."
+          class="bg-white/5 border border-white/5 rounded-2xl py-2 pl-10 pr-4 text-[10px] font-bold tracking-widest text-white placeholder:text-slate-600 focus:border-primary/40 focus:bg-white/[0.08] outline-none transition-all w-72 shadow-inner"
         />
       </div>
-      <button class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all relative">
-        <Bell :size="18" />
-        <span class="absolute top-2 right-2 w-2 h-2 bg-destructive rounded-full border-2 border-[#0a0b10]"></span>
-      </button>
-      <button class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all">
-        <Moon :size="18" />
-      </button>
+      
+      <div class="flex items-center bg-white/5 rounded-2xl p-1 border border-white/5">
+        <button class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all relative group">
+          <Bell :size="18" />
+          <span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-destructive rounded-full border border-black group-hover:scale-125 transition-transform"></span>
+        </button>
+        <button class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all">
+          <Settings :size="18" />
+        </button>
+      </div>
+
       <div class="w-[1px] h-6 bg-white/10 mx-1"></div>
-      <button class="flex items-center gap-2 hover:bg-white/5 p-1.5 rounded-xl transition-all">
-        <div class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center overflow-hidden">
-          <User :size="16" class="text-slate-400" />
+
+      <button class="flex items-center gap-3 hover:bg-white/5 pl-1.5 pr-4 py-1.5 rounded-2xl transition-all border border-transparent hover:border-white/5 group">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 border border-white/10 flex items-center justify-center overflow-hidden shadow-lg group-hover:border-primary/50 transition-colors">
+          <User :size="16" class="text-slate-400 group-hover:text-white transition-colors" />
         </div>
-        <span class="text-xs font-bold text-slate-300 hidden sm:block">Admin</span>
+        <div class="text-left leading-none hidden sm:block">
+          <p class="text-[10px] font-black text-white tracking-tight">ADMIN_ROOT</p>
+          <p class="text-[8px] font-bold text-slate-500 mt-1 uppercase">SysOp Level 4</p>
+        </div>
       </button>
     </div>
   </header>

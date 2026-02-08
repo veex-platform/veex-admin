@@ -1,10 +1,10 @@
 <template>
   <div
-    class="absolute rounded-2xl border-2 border-dashed z-0 p-4 shadow-sm arch-group bg-gradient-to-br from-white/60 to-white/40 backdrop-blur-sm"
+    class="absolute rounded-[2rem] border border-dashed z-0 p-6 shadow-2xl arch-group bg-black/20 backdrop-blur-md"
     :class="colorClass"
     :style="{ left: x + 'px', top: y + 'px', width: width + 'px', height: height + 'px', animationDelay: (delay ?? 0) + 's' }"
   >
-    <div class="text-[10px] font-black uppercase tracking-[0.2em] mb-4 text-center" :class="textClass">{{ title }}</div>
+    <div class="text-[9px] font-black uppercase tracking-[0.3em] mb-4 text-center opacity-60 group-hover:opacity-100 transition-opacity" :class="textClass">{{ title }}</div>
   </div>
 </template>
 

@@ -1,16 +1,16 @@
 <template>
   <div
-    class="absolute z-10 p-4 rounded-xl shadow-lg border-2 w-56 bg-white backdrop-blur-sm transition-all duration-300 arch-node hover:shadow-xl hover:scale-[1.08] hover:-translate-y-1"
+    class="absolute z-10 p-5 rounded-2xl border w-64 bg-black/40 backdrop-blur-xl transition-all duration-500 arch-node hover:shadow-2xl hover:scale-[1.05] hover:border-primary/40 group active:scale-95 cursor-pointer"
     :class="colorClass"
     :style="{ left: x + 'px', top: y + 'px', animationDelay: (delay ?? 0) + 's' }"
   >
-    <div class="flex items-center gap-3">
-      <div :class="['p-2 rounded-lg bg-opacity-10', bgClass]">
-        <component :is="icon" :size="20" :class="textClass" />
+    <div class="flex items-center gap-4">
+      <div :class="['p-3 rounded-xl bg-black/40 border border-white/5 transition-colors group-hover:border-primary/20', bgClass]">
+        <component :is="icon" :size="20" :class="textClass" class="filter drop-shadow-[0_0_8px_currentColor]" />
       </div>
-      <div>
-        <h4 class="text-[11px] font-bold uppercase tracking-wider leading-none text-slate-800">{{ title }}</h4>
-        <p class="text-[10px] text-slate-500 mt-1 font-medium">{{ subtitle }}</p>
+      <div class="flex-1 min-w-0">
+        <h4 class="text-[11px] font-black uppercase tracking-[0.2em] leading-none text-white group-hover:text-primary transition-colors truncate">{{ title }}</h4>
+        <p class="text-[10px] font-bold text-slate-500 mt-2 uppercase tracking-widest leading-none">{{ subtitle }}</p>
       </div>
     </div>
   </div>
