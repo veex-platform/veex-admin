@@ -13,6 +13,6 @@ yarn-error.log*
 .env*.local
 .vscode
 .idea
-Dockerfile
-nginx.conf
+# Dockerfile and nginx.conf should NOT be ignored as they are needed in the context (sometimes)
+# Actually, the Dockerfile is usually not needed in context, but nginx.conf IS.
 README.md
