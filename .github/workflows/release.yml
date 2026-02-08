@@ -32,12 +32,12 @@ jobs:
 
       - name: Create Archive
         run: |
-          tar -czf veex-admin-build.tar.gz .next
+          tar -czf veex-admin-build.tar.gz dist
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: veex-admin-build.tar.gz
-          body: "VEEX Admin Portal SSR Build. Version ${{ github.ref_name }}"
+          body: "VEEX Admin Portal Build (Vite). Version ${{ github.ref_name }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
