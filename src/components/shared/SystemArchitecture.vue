@@ -53,17 +53,3 @@ import ArchNode from './SystemArchitectureNode.vue'
   }
 }
 </style>
-
-<style scoped>
-.grid-dot {
-  background-image: radial-gradient(#000 1px, transparent 0);
-  background-size: 24px 24px;
-}
-.arch-label {
-  opacity: 0;
-  animation: fadeIn 0.4s ease forwards;
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-</style>

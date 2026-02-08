@@ -120,8 +120,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import Header from '@/components/shared/Header.vue'
 import { 
-  Plus, RefreshCw, HardDrive, Cpu, Zap, X, Activity, 
-  ChevronRight, MoreVertical 
+  Plus, RefreshCw, HardDrive, Cpu, Zap, X, Activity 
 } from 'lucide-vue-next'
 
 interface Device {

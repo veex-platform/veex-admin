@@ -236,5 +236,3 @@ onBeforeUnmount(() => clearInterval(intervalId))
   background: rgba(59, 130, 246, 0.2);
 }
 </style>
-
-</style>

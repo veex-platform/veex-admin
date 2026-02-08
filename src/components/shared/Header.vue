@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Bell, Moon, User, Search, Activity, Cpu, AlertTriangle } from 'lucide-vue-next'
+import { Bell, User, Search, Activity, Cpu, AlertTriangle, Settings } from 'lucide-vue-next'
 
 defineProps<{ title: string; description?: string }>()
 
